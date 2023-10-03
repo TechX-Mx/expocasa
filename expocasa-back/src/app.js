@@ -3,6 +3,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const userRoutes = require("./routes/user.routes")
 
 const server = express();
 
@@ -24,7 +25,7 @@ server.use((req, res, next) => {
     next();
   });
 
-// server.use("/", console.log("escuchando"));
+server.use("/", userRoutes);
 
 server.use((err, req, res, next) => {
   const status = err.status || 500;
