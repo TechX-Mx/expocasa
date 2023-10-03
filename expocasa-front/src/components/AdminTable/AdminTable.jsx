@@ -9,7 +9,7 @@ import {
     Divider,
     SvgIcon,
     useMediaQuery,
-    Table,    
+    Table,
 } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 import { toast } from "react-toastify";
@@ -24,7 +24,7 @@ export const AdminTable = ({ users }) => {
             width: 200,
             valueGetter: (params) =>
                 `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-        },        
+        },
         {
             field: "age",
             headerName: "Fecha de nacimiento",
@@ -59,14 +59,16 @@ export const AdminTable = ({ users }) => {
     }));
 
     return (
-        <Box>
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                checkboxSelection
-                disableSelectionOnClick
-            />
+        <Box sx={{ height: '78.4vh' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center',}}>
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    pageSize={5}
+                    checkboxSelection
+                    disableSelectionOnClick
+                />
+            </Box>
         </Box>
     )
 }

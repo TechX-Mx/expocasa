@@ -1,10 +1,12 @@
 import { createBrowserRouter, Route, RouterProvider, Routes, } from "react-router-dom";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import { Home } from "./pages/Home/Home";
 import { Header } from "./layout/Header/Header";
 import { Footer } from "./layout/Footer/Footer";
 import { Register } from "./pages/Regsister/Register";
 import { Admin } from "./pages/Admin/Admin";
+import { Login } from "./pages/Admin/Login";
+import { AuthProvider } from "./context/AuthContext";
+import { AdminRoute } from "./guard/AdminRoute";
 
 const router = createBrowserRouter([
   { path: "*", Component: Root },
@@ -33,20 +35,23 @@ function Root() {
       },
     },
   });
-  
+
 
   return (
     <>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <Header />
-        <Routes>
-          <Route path="*" element={<div>Error</div>} />
-          <Route path="/" element={<Register />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-        <Footer />
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <Header />
+          <Routes>
+            <Route path="*" element={<div>Error</div>} />
+            <Route path="/" element={<Register />} />
+            <Route path="/admin" element={<AdminRoute> <Admin /> </AdminRoute>} />
+            <Route path="/tarascc1231ñapsl" element={<Login />} />
+          </Routes>
+          <Footer />
+        </ThemeProvider>
+      </AuthProvider>
     </>
   )
 }

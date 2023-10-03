@@ -198,7 +198,7 @@ const RegisterForm = () => {
         )
     }
 
-    if (far) {
+    if (distanceCalculated && far) {
         console.log('lejos')
         return (
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>

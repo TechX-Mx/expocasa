@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
+import { useAuth } from '../../context/AuthContext';
 import {
     Box,
     Toolbar,
@@ -10,9 +11,16 @@ import {
 } from '@mui/material';
 
 export const Header = () => {
+    const { user, logout } = useAuth()
+
     const navigate = useNavigate();
-    const handleRegister = () => {
-        navigate('/');
+
+    const handleAdmin = () => {
+        navigate('/admin');
+    }
+
+    const handleExit = () => {
+        logout();
     }
 
     return (
@@ -24,9 +32,19 @@ export const Header = () => {
                             EXPOCASA
                         </Link>
                     </Typography>
-                    <Button sx={{ bgcolor: "#E8A326", color: 'white', '&:hover': { bgcolor: "red", color: 'white', } }} onClick={() => handleRegister()}>
-                        Registra tu número
-                    </Button>
+                    {user?.admin
+                        ?
+                        <Box sx={{ display: 'flex', gap: 2}}>
+                            <Button sx={{ bgcolor: "#E8A326", color: 'white', '&:hover': { bgcolor: "red", color: 'white', } }} onClick={() => handleAdmin()}>
+                                PANEL ADMIN
+                            </Button>
+                            <Button sx={{ bgcolor: "#E8A326", color: 'white', '&:hover': { bgcolor: "red", color: 'white', } }} onClick={() => handleExit()}>
+                                CERRAR SESIÓN
+                            </Button>
+                        </Box>
+                        :
+                        <Box></Box>
+                    }
                 </Toolbar>
             </AppBar>
         </Box>
