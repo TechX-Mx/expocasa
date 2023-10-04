@@ -42,7 +42,7 @@ const RegisterForm = () => {
 
     React.useEffect(() => {
         if (latitude !== null && longitude !== null) {
-            const distance = calculateDistance(expoForum.latitude, expoForum.longitude, p.latitude, p.longitude); //CAMBIAR
+            const distance = calculateDistance(expoForum.latitude, expoForum.longitude, latitude, longitude);
             setDistanceCalculated(true);
             if (distance > 2000) { //CAMBIAR
                 setFar(true);
