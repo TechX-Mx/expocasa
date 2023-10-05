@@ -72,7 +72,7 @@ export const WinnerSelect = ({ users }) => {
                     ?
                     <Box>
                         <Typography>
-                            Encontrado {`${winner.name} ${winner.lastName}`}
+                            Encontrado {`${winner.name} ${winner.lastName} ${winner.phone} ${winner.number}`}
                         </Typography>
                     </Box>
                     :
