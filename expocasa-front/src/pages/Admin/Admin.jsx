@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { AdminTable } from '../../components/AdminTable/AdminTable'
 import axios from 'axios';
+import { AdminActions } from '../../components/AdminActions/AdminActions';
+import { Box } from '@mui/material';
 
 export const Admin = () => {
   const [users, setUsers] = useState([]);
@@ -18,6 +20,9 @@ export const Admin = () => {
 
 
   return (
-    <AdminTable users={users}/>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '78.2dvh', }}>
+      <AdminActions users={users} getUsers={getUsers}/>
+      <AdminTable users={users} />
+    </Box>
   )
 }

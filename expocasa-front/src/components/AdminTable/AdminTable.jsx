@@ -24,12 +24,7 @@ export const AdminTable = ({ users }) => {
             width: 200,
             valueGetter: (params) =>
                 `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-        },
-        {
-            field: "age",
-            headerName: "Fecha de nacimiento",
-            width: 200,
-        },
+        },        
         {
             field: "email",
             headerName: "Correo electrónico",
@@ -38,7 +33,7 @@ export const AdminTable = ({ users }) => {
         {
             field: "number",
             headerName: "Número",
-            width: 200,
+            width: 170,
         },
         {
             field: "phone",
@@ -51,24 +46,25 @@ export const AdminTable = ({ users }) => {
         id: user.id,
         num: i + 1,
         lastName: user.lastName,
-        firstName: user.name,
-        age: user.age,
+        firstName: user.name,        
         email: user.email,
         number: user.number,
         phone: user.phone,
     }));
 
     return (
-        <Box sx={{ height: '78.4vh' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center',}}>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    pageSize={5}
-                    checkboxSelection
-                    disableSelectionOnClick
-                />
-            </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, }}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                initialState={{
+                    pagination: { paginationModel: { pageSize: 5 } },
+                }}
+                pageSizeOptions={[ 5, 10, ]}
+                checkboxSelection
+                disableSelectionOnClick
+                sx={{ maxHeight: "1200px" }}
+            />
         </Box>
     )
 }
