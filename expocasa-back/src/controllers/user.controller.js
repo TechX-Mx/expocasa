@@ -36,7 +36,8 @@ async function addUser(req, res) {
         userToSave.email = userToSave.email?.toLowerCase();
 
         const checkIp = await User.findOne({ where: { ip: userToSave.ip } })
-        if (checkIp) return res.status(402).send("Ya has registrado un numero.")
+        const checkAdmin = await User.findOne({ where: { ip: 'admin' } })
+        if (checkIp && !checkAdmin) return res.status(402).send("Ya has registrado un numero.")        
 
         const checkEmail = await User.findOne({ where: { email: userToSave.email } });
         if (checkEmail) return res.status(401).send("Email o usuario en uso");

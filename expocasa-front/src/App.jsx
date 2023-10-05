@@ -2,7 +2,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes, } from "react-route
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { Header } from "./layout/Header/Header";
 import { Footer } from "./layout/Footer/Footer";
-import { Register } from "./pages/Regsister/Register";
+import { Register } from "./pages/Register/Register";
 import { Admin } from "./pages/Admin/Admin";
 import { Login } from "./pages/Admin/Login";
 import { AuthProvider } from "./context/AuthContext";
