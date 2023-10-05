@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Button, SvgIcon, TextField } from '@mui/material';
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
 
 export const Login = () => {
     const [email, setEmail] = React.useState("");
@@ -32,10 +33,9 @@ export const Login = () => {
                     password: formData.get("password"),
                 };
                 login(data);
-                console.log(data)
             }
         } catch (error) {
-            console.log(error);
+            return toast.error("Ha ocurrido un error. Intente de nuevo mas tarde")
         }
     };
 
