@@ -15,9 +15,9 @@ export const Register = () => {
 
   React.useEffect(() => {
     if (latitude !== null && longitude !== null) {
-      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, latitude, longitude);
+      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, p.latitude, p.longitude); //CAMBIAR
       setDistanceCalculated(true);
-      if (distance > 2000) {
+      if (distance > 2000) { //CAMBIAR
         setFar(true);
       }
     }
