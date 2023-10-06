@@ -7,6 +7,7 @@ import { Admin } from "./pages/Admin/Admin";
 import { Login } from "./pages/Admin/Login";
 import { AuthProvider } from "./context/AuthContext";
 import { AdminRoute } from "./guard/AdminRoute";
+import { WinnerCheck } from "./components/WinnerCheck/WinnerCheck";
 
 const router = createBrowserRouter([
   { path: "*", Component: Root },
@@ -47,6 +48,7 @@ function Root() {
             <Route path="*" element={<div>Error</div>} />
             <Route path="/" element={<Register />} />
             <Route path="/admin" element={<AdminRoute> <Admin /> </AdminRoute>} />
+            <Route path="/check" element={<WinnerCheck/>} />
             <Route path="/tarascc1231ñapsl" element={<Login />} />
           </Routes>
           <Footer />
