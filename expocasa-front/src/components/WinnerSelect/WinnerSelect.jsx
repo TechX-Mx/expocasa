@@ -56,60 +56,63 @@ export const WinnerSelect = ({ users }) => {
 
     return (
         <Box>
-            <Typography sx={{ mb: 1, fontSize: "2em", }}>
-                Buscar un Ganador
-            </Typography>
-            <TextField
-                onChange={(e) => validateNumber(e.target.value)}
-                value={number}
-                margin="normal"
-                required
-                fullWidth
-                id="number"
-                placeholder="Número de pelotas"
-                name="number"
-                sx={{ bgcolor: "#8c8888" }}
-            />
-            {loading && <LinearProgress sx={{ mb: 2 }} />}
-            {loading ? (
-                <Typography sx={{ mb: 2,}}>
-                    Cargando...
+            <Box sx={{ display: winner ? 'none' : '' }}>
+                <Typography sx={{ mb: 1, fontSize: "2em", }}>
+                    Buscar un Ganador
                 </Typography>
-            ) : (
-                found === 'found' ? (
-                    <Box sx={{ display: 'flex', flexDirection: 'column', mb: 2, gap: 1, }}>
-                        <Typography sx={{ fontSize: "1.5em"}}>
-                            Ganador encontrado:
-                        </Typography>
-                        <Typography sx={{ fontSize: "1em"}}>
-                            {`${winner.name} ${winner.lastName}`}
-                        </Typography>
-                        <Typography sx={{ fontSize: "1em"}}>
-                            {`Número telefónico: ${winner.phone}`}
-                        </Typography>
-                        <Typography sx={{ fontSize: "1em"}}>
-                            {`Número de pelotas ingresado: ${winner.number}`}
-                        </Typography>
-                    </Box>
+                <TextField
+                    onChange={(e) => validateNumber(e.target.value)}
+                    value={number}
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="number"
+                    placeholder="Número de pelotas"
+                    name="number"
+                    sx={{ bgcolor: "#8c8888" }}
+                />
+                {loading && <LinearProgress sx={{ mb: 2 }} />}
+                {loading ? (
+                    <Typography sx={{ mb: 2, }}>
+                        Cargando...
+                    </Typography>
                 ) : (
-                    found === 'notFound' ? (
-                        <Box sx={{ mb: 2, }}>
-                            <Typography>
-                                No encontrado
+                    found === 'found' ? (
+                        <Box sx={{ display: 'flex', flexDirection: 'column', mb: 2, gap: 1, }}>
+                            <Typography sx={{ fontSize: "1.5em" }}>
+                                Ganador encontrado:
+                            </Typography>
+                            <Typography sx={{ fontSize: "1em" }}>
+                                {`${winner.name} ${winner.lastName}`}
+                            </Typography>
+                            <Typography sx={{ fontSize: "1em" }}>
+                                {`Número telefónico: ${winner.phone}`}
+                            </Typography>
+                            <Typography sx={{ fontSize: "1em" }}>
+                                {`Número de pelotas ingresado: ${winner.number}`}
                             </Typography>
                         </Box>
                     ) : (
-                        <Box sx={{ mb: 2, }}>
-                            <Typography>
-                                Esperando
-                            </Typography>
-                        </Box>
+                        found === 'notFound' ? (
+                            <Box sx={{ mb: 2, }}>
+                                <Typography>
+                                    No encontrado
+                                </Typography>
+                            </Box>
+                        ) : (
+                            <Box sx={{ mb: 2, }}>
+                                <Typography>
+                                    Esperando
+                                </Typography>
+                            </Box>
+                        )
                     )
-                )
-            )}
-            <Button onClick={handleSend} variant="contained" color="primary">
-                Enviar
-            </Button>            
+                )}
+                <Button onClick={handleSend} variant="contained" color="primary">
+                    Enviar
+                </Button>
+            </Box>
+            <WinnerCheck winner={winner} />
         </Box>
     );
 };

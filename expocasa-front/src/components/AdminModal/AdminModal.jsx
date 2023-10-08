@@ -6,7 +6,7 @@ import { WinnerSelect } from '../WinnerSelect/WinnerSelect';
 export const AdminModal = ({ open, onClose, action, getUsers, users }) => {    
 
     return (
-        <Modal open={open} onClose={onClose}>
+        <Modal open={open} onClose={onClose} sx={{ overflowX: 'auto',}}>
             <Box
                 sx={{
                     position: 'absolute',
@@ -17,7 +17,8 @@ export const AdminModal = ({ open, onClose, action, getUsers, users }) => {
                     boxShadow: 24,
                     p: 4,
                     borderRadius: 2,
-                    minWidth: 400,
+                    maxWidth: "1000px",
+                    
                 }}
             >
                 {

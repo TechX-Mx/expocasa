@@ -1,6 +1,121 @@
-#check{    
-    background-color: white;
-    width: 80vw;
-    height: 40vh;
-    padding: 20px;
+#container {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+#check {
+  background-color: white;
+  min-width: 700px;
+  max-width: 1000px;
+  min-height: 40vh;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  #check {
+    width: 90vw;
+    height: 30vh;
+  }
+
+  .MuiTypography-root {
+    font-size: 1em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #check {
+    width: 95vw;
+    height: 25vh;
+  }
+
+  .MuiTypography-root {
+    font-size: 1em !important;
+  }
+}
+
+#inner {
+  display: flex;
+  flex-direction: column;
+  outline: 2px solid #ebaf42;
+  height: 40vh;
+}
+
+#logo {
+  margin: 10px 10px 0px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#date {
+  height: 25px;
+  border-bottom: solid 2px #ebaf42;
+}
+
+#img {
+  height: 50px;
+  width: 100px;
+}
+
+.MuiTypography-root {
+  color: black;
+}
+
+#row1-text {
+  margin: 60px 20px 0px 20px;
+  height: 40px;
+}
+
+#border {
+  border-bottom: solid 2px #ebaf42;
+  padding-right: 0px;
+}
+
+.row1-text.first {
+  font-size: 0.8em;
+}
+
+.row1-text:nth-child(2n) {
+  margin-left: 10px;
+}
+
+.row1-text.last {
+  position: relative;
+  right: 20px;
+  font-size: 1.6em;
+  padding-top: 5px;
+}
+
+#row2-text {
+  height: 30px;
+  border-bottom: solid 2px #ebaf42;
+  padding-bottom: 3px;
+  margin: 6px 70px 0px 20px;
+}
+
+.row2-text.first {
+  font-size: 1.8em;
+}
+
+.row2-text:nth-child(2n) {
+  font-size: 2.5em;
+  margin-left: 15px;
+}
+
+.row2-text.last {
+  font-size: 1.3em;
+}
+
+#row3-text {
+  position: relative;
+  top: 60px;
+  margin: 0px 20px;
+}
+
+.row3-text {
+  border-bottom: solid 2px #ebaf42;
+}
+
+.user-info {
+  font-size: 0.2em ;
 }

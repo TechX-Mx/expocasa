@@ -7,7 +7,6 @@ import { Admin } from "./pages/Admin/Admin";
 import { Login } from "./pages/Admin/Login";
 import { AuthProvider } from "./context/AuthContext";
 import { AdminRoute } from "./guard/AdminRoute";
-import { WinnerCheck } from "./components/WinnerCheck/WinnerCheck";
 
 const router = createBrowserRouter([
   { path: "*", Component: Root },
@@ -27,12 +26,12 @@ function Root() {
       },
       mode: 'dark',
       primary: {
-        main: '#E8A326', // Mantenido el mismo color para el tema primario
+        main: '#E8A326',
       },
       secondary: {
-        light: '#0066ff', // Mantenido el color claro secundario
-        main: '#0044ff', // Mantenido el color principal secundario
-        contrastText: '#ffcc00', // Mantenido el color de texto de contraste
+        light: '#0066ff',
+        main: '#0044ff',
+        contrastText: '#ffcc00',
       },
     },
   });
@@ -47,8 +46,7 @@ function Root() {
           <Routes>
             <Route path="*" element={<div>Error</div>} />
             <Route path="/" element={<Register />} />
-            <Route path="/admin" element={<AdminRoute> <Admin /> </AdminRoute>} />
-            <Route path="/check" element={<WinnerCheck/>} />
+            <Route path="/admin" element={<AdminRoute> <Admin /> </AdminRoute>} />            
             <Route path="/tarascc1231ñapsl" element={<Login />} />
           </Routes>
           <Footer />
