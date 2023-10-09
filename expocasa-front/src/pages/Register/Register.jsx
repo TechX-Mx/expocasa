@@ -78,7 +78,7 @@ export const Register = () => {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-          <Typography>
+          <Typography sx={{ color: "white"}}>
             Dale el permiso al navegador para ver tu ubicación...
           </Typography>
           <CircularProgress />
@@ -89,7 +89,7 @@ export const Register = () => {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh', }}>
         <Box sx={{ maxWidth: "220px" }}>
-          <Typography sx={{ textAlign: 'center' }}>
+          <Typography sx={{ textAlign: 'center', color: "white" }}>
             Has denegado el permiso al navegador para saber tu ubicación. Para poder participar, debes manualmente dar los permisos correspondientes.
           </Typography>
         </Box>
@@ -100,7 +100,7 @@ export const Register = () => {
   if (!distanceCalculated) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, }}>
           <CircularProgress />
         </Box>
       </Box>
@@ -112,7 +112,7 @@ export const Register = () => {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-          <Typography sx={{ textAlign: 'center' }}>
+          <Typography sx={{ textAlign: 'center', color: "white", }}>
             Tienes que estar en el lugar del evento para participar
           </Typography>
         </Box>
