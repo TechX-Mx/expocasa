@@ -9,6 +9,7 @@ import {
     Button,
     Link,
 } from '@mui/material';
+import logo from '../../assets/logos/EXPOCASA_logo_blanco.png'
 
 export const Header = () => {
     const { user, logout } = useAuth()
@@ -29,7 +30,7 @@ export const Header = () => {
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         <Link sx={{ textDecoration: 'none', color: 'white' }} href="/">
-                            EXPOCASA
+                            <img src={logo} style={{ height: "100px"}}></img>
                         </Link>
                     </Typography>
                     {user?.admin

@@ -22,7 +22,7 @@ function Root() {
   const darkTheme = createTheme({
     palette: {
       background: {
-        default: '#121212',
+        default: '#283374',
       },
       mode: 'dark',
       primary: {

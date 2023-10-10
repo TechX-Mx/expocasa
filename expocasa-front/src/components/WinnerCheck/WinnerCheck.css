@@ -2,13 +2,14 @@
   overflow-x: auto;
   overflow-y: auto;
   max-height: 60vh;
+  max-width: 800px;
 }
 
 #check {
   background-color: white;
   min-width: 700px;
   max-width: 1000px;
-  min-height: 40vh;
+  min-height: 45vh;
   padding: 10px;
 }
 
@@ -35,10 +36,11 @@
 }
 
 #inner {
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
   outline: 2px solid #ebaf42;
-  height: 40vh;
+  height: 45dvh;
 }
 
 #logo {
@@ -53,8 +55,8 @@
 }
 
 #img {
-  height: 50px;
-  width: 100px;
+  height: 80px;
+  width: 140px;
 }
 
 .MuiTypography-root {
@@ -77,6 +79,7 @@
 
 .row1-text:nth-child(2n) {
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .row1-text.last {
@@ -94,7 +97,7 @@
 }
 
 .row2-text.first {
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 
 .row2-text:nth-child(2n) {
@@ -107,8 +110,10 @@
 }
 
 #row3-text {
-  position: relative;
-  top: 60px;
+  position: absolute;
+  display: flex;
+  gap: 200px;
+  bottom: 0px;
   margin: 0px 20px;
 }
 
@@ -117,5 +122,5 @@
 }
 
 .user-info {
-  font-size: 0.2em ;
+  font-size: 0.1em ;
 }

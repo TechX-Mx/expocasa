@@ -5,6 +5,8 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
+import logo from '../../assets/logos/EXPOCASA_logo_blanco.png'
+import './styles.css'
 
 export const Register = () => {
   const [latitude, setLatitude] = React.useState(null);
@@ -15,7 +17,7 @@ export const Register = () => {
 
   React.useEffect(() => {
     if (latitude !== null && longitude !== null) {
-      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, latitude, longitude); //CAMBIAR
+      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, p.latitude, p.longitude); //CAMBIAR
       setDistanceCalculated(true);
       if (distance > 2000) { //CAMBIAR
         setFar(true);
@@ -121,7 +123,8 @@ export const Register = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '90dvh', display: 'flex', alignItems: 'center',}}>
+    <Box sx={{ minHeight: '90dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', my: 4, position: 'relative', }}>
+      <img id='logo-expocasa' src={logo} alt='logo-expocasa'></img>
       <RegisterForm />
     </Box>
   )

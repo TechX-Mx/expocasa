@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import './WinnerCheck.css';
-import logo from '../../assets/logos/logo-canadevi.png'
+import logo from '../../assets/logos/EXPOCASA_logo_original.png'
 
 export const WinnerCheck = ({ winner }) => {
     useEffect(() => {
@@ -28,7 +28,7 @@ export const WinnerCheck = ({ winner }) => {
                     <Box id='row1-text' sx={{ display: 'flex', justifyContent: "space-between" }}>
                         <Box id="border" sx={{ display: 'flex', alignItems: 'center' }}>
                             <Box sx={{ width: "110px", }}>
-                                <Typography className="row1-text first">PAGUESE POR ESTE CHEQUE A:</Typography>
+                                <Typography className="row1-text first">AL GANADOR DEL SORTEO:</Typography>
                             </Box>
                             <Typography className="row1-text second">{winner?.name} {winner?.lastName}</Typography>
                         </Box>
@@ -38,7 +38,7 @@ export const WinnerCheck = ({ winner }) => {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box id='row2-text' sx={{ display: 'flex', justifyContent: "space-between", height: "45px" }}>
+                    <Box id='row2-text' sx={{ display: 'flex', justifyContent: "space-between", minHeight: "45px" }}>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <Box>
                                 <Typography className="row2-text first">CIEN MIL</Typography>
@@ -51,12 +51,14 @@ export const WinnerCheck = ({ winner }) => {
                             </Typography>
                         </Box>
                     </Box>
-                    <Box id='row3-text' sx={{ display: 'flex', justifyContent: "space-between", }}>
+                    <Box id='row3-text' sx={{}}>
                         <Box>
-                            <Typography className='row3-text' sx={{ fontWeight: 600, fontSize: "1.8em", }}>SORTEO EXPOCASA</Typography>
-                            <Box sx={{ mt: 2,}}>
-                                <Typography className='user-info' sx={{ fontWeight: 600, }}>NUMERO TELEFONICO: {winner?.phone}</Typography>
-                                <Typography className='user-info' sx={{ fontWeight: 600, }}>PELOTAS ADIVINADAS: {winner?.number}</Typography>
+                            <Box sx={{ width: "250px"}}>
+                                <Typography className='row3-text' sx={{ fontWeight: 600, fontSize: "1em", }}>VALE POR UN DESCUENTO EN LA COMPRA DE UNA CASA</Typography>
+                            </Box>
+                            <Box sx={{ mt: 2, }}>
+                                <Typography className='user-info' sx={{ fontWeight: 600, fontSize: "0.8em" }}>NUMERO TELEFONICO: {winner?.phone}</Typography>
+                                <Typography className='user-info' sx={{ fontWeight: 600, fontSize: "0.8em" }}>PELOTAS ADIVINADAS: {winner?.number}</Typography>
                             </Box>
                         </Box>
                         <Box>
