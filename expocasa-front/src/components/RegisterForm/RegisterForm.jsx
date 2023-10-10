@@ -82,7 +82,9 @@ const RegisterForm = ({ admin, getUsers }) => {
                 if (admin) {
                     getUsers();
                 } else {
-                    window.location.href = '/'
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 10000)
                 }
             } catch (error) {
                 const status = error.response ? error.response.status : null;
