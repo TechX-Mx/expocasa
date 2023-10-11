@@ -14,7 +14,7 @@ import axios from "axios";
 import './RegisterForm.css';
 
 
-const RegisterForm = ({ admin, getUsers }) => {
+const RegisterForm = ({ admin, getUsers, onClose }) => {
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -81,6 +81,7 @@ const RegisterForm = ({ admin, getUsers }) => {
                 toast.success("Todo listo, ahora participas del sorteo");
                 if (admin) {
                     getUsers();
+                    onClose();
                 } else {
                     setTimeout(() => {
                         window.location.href = '/'

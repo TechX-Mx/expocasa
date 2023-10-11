@@ -29,7 +29,7 @@ export const AdminModal = ({ open, onClose, action, getUsers, users }) => {
                         </Box>
                         :
                         <Box>
-                            <RegisterForm admin={true} getUsers={getUsers} />
+                            <RegisterForm admin={true} getUsers={getUsers} onClose={onClose} />
                         </Box>
                 }
             </Box>
