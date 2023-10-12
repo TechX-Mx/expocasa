@@ -47,12 +47,15 @@ async function addUser(req, res) {
             from: process.env.MAILER_MAIL,
             to: userToSave.email,
             subject: 'Ahora participas del evento',
-            text: 
-            `Comprobante de la Dinámica: 
-            Nombre completo: ${userToSave.name} ${userToSave.lastName}, 
-            Número de teléfono: ${userToSave.phone},
-            Número de pelotas: ${userToSave.number}, 
-            ¡Gracias por participar!`,
+            html: `
+                <p>Comprobante de la Dinámica:</p>
+                <ul>
+                    <li>Nombre completo: ${userToSave.name} ${userToSave.lastName}</li>
+                    <li>Número de teléfono: ${userToSave.phone}</li>
+                    <li>Número de pelotas: ${userToSave.number}</li>
+                </ul>
+                <p>¡Gracias por participar!</p>
+            `,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
