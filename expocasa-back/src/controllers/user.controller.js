@@ -46,7 +46,7 @@ async function addUser(req, res) {
         const mailOptions = {
             from: process.env.MAILER_MAIL,
             to: userToSave.email,
-            subject: 'Ahora participas del evento',
+            subject: 'Ya participas en la dinámica de EXPO CASA CANADEVI 2023',
             html: `
                 <p>Comprobante de la Dinámica:</p>
                 <ul>
