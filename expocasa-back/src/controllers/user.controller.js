@@ -1,8 +1,6 @@
 require('dotenv').config({ path: './.env' });
 const { User } = require('../db');
-const jwt = require('jsonwebtoken');
-const secret = process.env.SECRET_KEY;
-const saltRounds = 5;
+const transporter = require('../utils/mailer');
 
 async function getUsers(req, res) {
     const userDB = await User.findAll({
@@ -37,12 +35,33 @@ async function addUser(req, res) {
 
         const checkIp = await User.findOne({ where: { ip: userToSave.ip } })
         const checkAdmin = await User.findOne({ where: { ip: 'admin' } })
-        if (checkIp && !checkAdmin) return res.status(402).send("Ya has registrado un numero.")        
+        if (checkIp && !checkAdmin) return res.status(402).send("Ya has registrado un numero.")
 
         const checkEmail = await User.findOne({ where: { email: userToSave.email } });
         if (checkEmail) return res.status(401).send("Email o usuario en uso");
 
         await userToSave.save();
+
+
+        const mailOptions = {
+            from: process.env.MAILER_MAIL,
+            to: userToSave.email,
+            subject: 'Ahora participas del evento',
+            text: 
+            `Comprobante de la Dinámica: 
+            Nombre completo: ${userToSave.name} ${userToSave.lastName}, 
+            Número de teléfono: ${userToSave.phone},
+            Número de pelotas: ${userToSave.number}, 
+            ¡Gracias por participar!`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error:', error);
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
 
         return res.send({
             msg: 'Creacion exitosa',

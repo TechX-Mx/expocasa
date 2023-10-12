@@ -9,7 +9,7 @@ export const WinnerCheck = ({ winner }) => {
 
         row1TextElements.forEach(element => {
             const numCharacters = element.innerText.length;
-            const adjustedFontSize = 3 - (numCharacters * 0.1);
+            const adjustedFontSize = 1.8 - (numCharacters * 0.1);
 
             element.style.fontSize = `${adjustedFontSize}em`;
         });
@@ -22,7 +22,7 @@ export const WinnerCheck = ({ winner }) => {
                     <Box id="logo">
                         <img id='img' src={logo} />
                         <Box id='date'>
-                            <Typography>XX de Agosto de 2023</Typography>
+                            <Typography>15 de Octubre de 2023</Typography>
                         </Box>
                     </Box>
                     <Box id='row1-text' sx={{ display: 'flex', justifyContent: "space-between" }}>
@@ -61,8 +61,8 @@ export const WinnerCheck = ({ winner }) => {
                                 <Typography className='user-info' sx={{ fontWeight: 600, fontSize: "0.8em" }}>PELOTAS ADIVINADAS: {winner?.number}</Typography>
                             </Box>
                         </Box>
-                        <Box>
-                            <Typography className='row3-text' sx={{ fontWeight: 600, fontSize: "1.8em", }}>FIRMA</Typography>
+                        <Box sx={{ width: "80px", }}>
+                            <Typography className='row3-text' sx={{ fontWeight: 600, fontSize: "1em", }}>Vigencia: 15/10/23</Typography>
                         </Box>
                     </Box>
                 </Box>
