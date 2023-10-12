@@ -94,7 +94,17 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
             };
             try {
                 await axios.post(`${svHost}/users`, data);
-                toast.success("Todo listo, ahora participas del sorteo");
+                toast.success("Todo listo, ¡ya estás participando!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                }
+                );
                 if (admin) {
                     getUsers();
                     onClose();
