@@ -21,7 +21,7 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
     const [emailError, setEmailError] = React.useState(false);
     const [number, setNumber] = React.useState("");
     const [phone, setPhone] = React.useState("");
-    const [ipAddress, setIPAddress] = React.useState('');   
+    const [ipAddress, setIPAddress] = React.useState('');
 
     const svHost = import.meta.env.VITE_HOST;
 
@@ -29,8 +29,24 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => setIPAddress(data.ip))
-            .catch(error => console.log(error));        
-    }, [])    
+            .catch(error => console.log(error));
+    }, [])
+
+    const validateName = (value) => {
+        if (value.length > 14) {
+            return;
+        } else {
+            setFirstName(value);
+        }
+    };
+
+    const validateLastName = (value) => {
+        if (value.length > 14) {
+            return;
+        } else {
+            setLastName(value);
+        }
+    };
 
     const validateEmail = (value) => {
         const emailRegex = /.+@.+\..+/;
@@ -85,7 +101,7 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
                 } else {
                     setTimeout(() => {
                         window.location.href = '/'
-                    }, 10000)
+                    }, 5000)
                 }
             } catch (error) {
                 const status = error.response ? error.response.status : null;
@@ -126,7 +142,7 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
-                        onChange={(e) => setFirstName(e.target.value)}
+                        onChange={(e) => validateName(e.target.value)}
                         value={firstName}
                         margin="normal"
                         required
@@ -139,7 +155,7 @@ const RegisterForm = ({ admin, getUsers, onClose }) => {
                         sx={{ bgcolor: "#8c8888", }}
                     />
                     <TextField
-                        onChange={(e) => setLastName(e.target.value)}
+                        onChange={(e) => validateLastName(e.target.value)}
                         value={lastName}
                         margin="normal"
                         required
