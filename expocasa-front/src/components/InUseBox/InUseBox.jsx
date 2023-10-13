@@ -5,13 +5,13 @@ import './styles.css'
 export const InUseBox = () => {
     return (
         <Box id="msgcontainer" >
-            <Typography sx={{ fontSize: "2em", color: "white" }}>
+            <Typography className='cardtext'>
                 Gracias Por Participar!
             </Typography>
-            <Typography sx={{ fontSize: "2em", color: "white", textAlign: "center" }}>
+            <Typography className='cardtext'>
                 Tu pronóstico ha sido registrado exitosamente,
             </Typography>
-            <Typography sx={{ fontSize: "2em", color: "white",  }}>
+            <Typography className='cardtext'>
                 ¡Buena Suerte!
             </Typography>
         </Box>

@@ -10,4 +10,22 @@
   border-radius: 10px;
   border: 1px solid #e8a326;
   padding: 100px 0px;
+  color: white;
+}
+
+.cardtext{
+  color: white;
+}
+
+@media (max-width: 768px) {
+  #msgcontainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  #msgcontainer {
+    width: 40%;
+    color: red;
+  }
 }
