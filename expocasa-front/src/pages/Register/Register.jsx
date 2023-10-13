@@ -14,6 +14,14 @@ export const Register = () => {
   const [permission, setPermission] = React.useState('');
   const [distanceCalculated, setDistanceCalculated] = React.useState(false);
   const [far, setFar] = React.useState(false);
+  const [ipAddress, setIPAddress] = React.useState('');
+
+  React.useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => setIPAddress(data.ip))
+        .catch(error => console.log(error));
+}, [])
 
   React.useEffect(() => {
     if (latitude !== null && longitude !== null) {
@@ -125,7 +133,7 @@ export const Register = () => {
   return (
     <Box sx={{ minHeight: '90dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', my: 4, position: 'relative', }}>
       <img id='logo-expocasa' src={logo} alt='logo-expocasa'></img>
-      <RegisterForm />
+      <RegisterForm ipAddress={ipAddress} />
     </Box>
   )
 }

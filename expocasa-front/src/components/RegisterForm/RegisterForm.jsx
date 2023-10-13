@@ -14,23 +14,15 @@ import axios from "axios";
 import './RegisterForm.css';
 
 
-const RegisterForm = ({ admin, getUsers, onClose }) => {
+const RegisterForm = ({ admin, getUsers, onClose, ipAddress, }) => {
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [emailError, setEmailError] = React.useState(false);
     const [number, setNumber] = React.useState("");
     const [phone, setPhone] = React.useState("");
-    const [ipAddress, setIPAddress] = React.useState('');
 
     const svHost = import.meta.env.VITE_HOST;
-
-    React.useEffect(() => {
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => setIPAddress(data.ip))
-            .catch(error => console.log(error));
-    }, [])
 
     const validateName = (value) => {
         if (value.length > 14) {
