@@ -5,8 +5,11 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-import logo from '../../assets/logos/EXPOCASA_logo_blanco.png'
-import './styles.css'
+import logo from '../../assets/logos/EXPOCASA_logo_blanco.png';
+import './styles.css';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { InUseBox } from '../../components/InUseBox/InUseBox';
 
 export const Register = () => {
   const [latitude, setLatitude] = React.useState(null);
@@ -15,17 +18,24 @@ export const Register = () => {
   const [distanceCalculated, setDistanceCalculated] = React.useState(false);
   const [far, setFar] = React.useState(false);
   const [ipAddress, setIPAddress] = React.useState('');
+  const [inUse, setInUse] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  const svHost = import.meta.env.VITE_HOST;
 
   React.useEffect(() => {
     fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => setIPAddress(data.ip))
-        .catch(error => console.log(error));
-}, [])
+      .then(response => response.json())
+      .then(data => {
+        setIPAddress(data.ip);
+        checkIp(data.ip);
+      })
+      .catch(error => console.log(error));
+  }, [])
 
   React.useEffect(() => {
     if (latitude !== null && longitude !== null) {
-      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, latitude, longitude); //CAMBIAR
+      const distance = calculateDistance(expoForum.latitude, expoForum.longitude, p.latitude, p.longitude); //CAMBIAR
       setDistanceCalculated(true);
       if (distance > 2000) { //CAMBIAR
         setFar(true);
@@ -45,6 +55,22 @@ export const Register = () => {
   const p = {
     latitude: "29.04693376875957",
     longitude: "-110.94319573066294",
+  }
+
+  const checkIp = async (ip) => {
+    try {
+      const res = await axios.post(`${svHost}/check`, { ip });
+      const status = res ? res.status : null;
+      console.log(status)
+      if (status === 202) {
+        setInUse(true);
+      } else {
+        setInUse(false);
+      }
+      setLoading(false)
+    } catch (error) {
+      toast.error("Ha habido un Error. Intente de nuevo mas tarde.");
+    }
   }
 
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -88,7 +114,7 @@ export const Register = () => {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-          <Typography sx={{ color: "white"}}>
+          <Typography sx={{ color: "white" }}>
             Dale el permiso al navegador para ver tu ubicación...
           </Typography>
           <CircularProgress />
@@ -107,7 +133,7 @@ export const Register = () => {
     )
   }
 
-  if (!distanceCalculated) {
+  if (!distanceCalculated || loading) {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, }}>
@@ -118,7 +144,6 @@ export const Register = () => {
   }
 
   if (distanceCalculated && far) {
-    console.log('lejos')
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
@@ -126,6 +151,15 @@ export const Register = () => {
             Tienes que estar en el lugar del evento para participar
           </Typography>
         </Box>
+      </Box>
+    )
+  }
+
+  if (inUse) {
+    return (
+      <Box sx={{ minHeight: '90dvh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', my: 4, position: 'relative', }}>
+        <img id='logo-expocasa' src={logo} alt='logo-expocasa'></img>
+        <InUseBox />
       </Box>
     )
   }

@@ -110,9 +110,12 @@ async function login(req, res) {
 async function checkIp (req, res) {
     try {
         const ip = req.body.ip;
-        const check = User.findOne({ where: { ip: ip }});
+        if (!ip) {
+            return res.status(400).send('No se ha obtenido la ip')
+        }
+        const check = await User.findOne({ where: { ip: ip }});
         if (check) {
-            return res.status(300).send("Ip en uso.");
+            return res.status(202).send("Ip en uso.");
         } else {
             return res.status(200).send("Vaya y pase.");
         }
