@@ -20,6 +20,7 @@ export const Register = () => {
   const [ipAddress, setIPAddress] = React.useState('');
   const [inUse, setInUse] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
+  const [status, setStatus] = React.useState();
 
   const svHost = import.meta.env.VITE_HOST;
 
@@ -61,7 +62,6 @@ export const Register = () => {
     try {
       const res = await axios.post(`${svHost}/check`, { ip });
       const status = res ? res.status : null;
-      console.log(status)
       if (status === 202) {
         setInUse(true);
       } else {
@@ -100,8 +100,15 @@ export const Register = () => {
           setPermission('done');
         },
         (error) => {
+          setPermission('error')
           if (error.code === 1) {
-            setPermission('error')
+            setStatus(1)
+          } else if (error.code === 2) {
+            setStatus(2)
+          } else if (error.code === 3) {
+            setStatus(3)
+          } else if (error.code === 0) {
+            setStatus(0)
           }
         }
       );
@@ -126,7 +133,20 @@ export const Register = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh', }}>
         <Box sx={{ maxWidth: "220px" }}>
           <Typography sx={{ textAlign: 'center', color: "white" }}>
-            Has denegado el permiso al navegador para saber tu ubicación. Para poder participar, debes manualmente dar los permisos correspondientes.
+            {
+              status === 1
+                ?
+                "Has denegado el permiso al navegador para saber tu ubicación. Para poder participar, debes manualmente dar los permisos correspondientes."
+                : status === 2
+                  ?
+                  "La ubicación del dispositivo está desactivada."
+                  : status === 3 
+                  ?
+                  "Ha expirado el tiempo de espera, inténtelo de nuevo."
+                  :
+                  "Ha ocurrido un error"
+          }
+
           </Typography>
         </Box>
       </Box>
