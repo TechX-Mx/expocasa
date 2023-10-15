@@ -157,16 +157,7 @@ export const Register = () => {
     return (
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, }}>
-          <CircularProgress />
-          `${latitude + " " +
-            longitude + " " +
-            permission + " " +
-            distanceCalculated + " " +
-            far + " " +
-            ipAddress + " " +
-            inUse + " " +
-            loading + " " +
-            status}`
+          <CircularProgress />          
         </Box>
       </Box>
     )
