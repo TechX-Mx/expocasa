@@ -19,7 +19,7 @@ export const Register = () => {
   const [far, setFar] = React.useState(false);
   const [ipAddress, setIPAddress] = React.useState('');
   const [inUse, setInUse] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   const [status, setStatus] = React.useState();
 
   const svHost = import.meta.env.VITE_HOST;
@@ -59,6 +59,7 @@ export const Register = () => {
   }
 
   const checkIp = async (ip) => {
+    setLoading(true)
     try {
       const res = await axios.post(`${svHost}/check`, { ip });
       const status = res ? res.status : null;
