@@ -100,6 +100,7 @@ export const Register = () => {
           setPermission('done');
         },
         (error) => {
+          console.log(error)
           setPermission('error')
           if (error.code === 1) {
             setStatus(1)
