@@ -19,7 +19,7 @@ export const Register = () => {
   const [far, setFar] = React.useState(false);
   const [ipAddress, setIPAddress] = React.useState('');
   const [inUse, setInUse] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [status, setStatus] = React.useState();
 
   const svHost = import.meta.env.VITE_HOST;
@@ -59,7 +59,6 @@ export const Register = () => {
   }
 
   const checkIp = async (ip) => {
-    setLoading(true)
     try {
       const res = await axios.post(`${svHost}/check`, { ip });
       const status = res ? res.status : null;
@@ -101,7 +100,6 @@ export const Register = () => {
           setPermission('done');
         },
         (error) => {
-          console.log(error)
           setPermission('error')
           if (error.code === 1) {
             setStatus(1)
@@ -142,12 +140,12 @@ export const Register = () => {
                 : status === 2
                   ?
                   "La ubicación del dispositivo está desactivada."
-                  : status === 3 
-                  ?
-                  "Ha expirado el tiempo de espera, inténtelo de nuevo."
-                  :
-                  "Ha ocurrido un error"
-          }
+                  : status === 3
+                    ?
+                    "Ha expirado el tiempo de espera, inténtelo de nuevo."
+                    :
+                    "Ha ocurrido un error"
+            }
 
           </Typography>
         </Box>
@@ -160,6 +158,15 @@ export const Register = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '90vh' }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, }}>
           <CircularProgress />
+          `${latitude + " " +
+            longitude + " " +
+            permission + " " +
+            distanceCalculated + " " +
+            far + " " +
+            ipAddress + " " +
+            inUse + " " +
+            loading + " " +
+            status}`
         </Box>
       </Box>
     )
