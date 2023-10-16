@@ -28,7 +28,7 @@ export const WinnerCheck = ({ winner }) => {
                     <Box id='row1-text' sx={{ display: 'flex', justifyContent: "space-between" }}>
                         <Box id="border" sx={{ display: 'flex', alignItems: 'center' }}>
                             <Box sx={{ width: "110px", }}>
-                                <Typography className="row1-text first">AL GANADOR DEL SORTEO:</Typography>
+                                <Typography className="row1-text first">AL GANADOR DE LA DINAMICA:</Typography>
                             </Box>
                             <Typography className="row1-text second">{winner?.name} {winner?.lastName}</Typography>
                         </Box>
